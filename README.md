@@ -1,4 +1,4 @@
-# Defacement-detection-app
+# Defacement-detection-app  
 Application that employs CNN to detect defacement.  
 Dataset is crawled from Zone.h including 1700 defaced and 2500 benign web screenshots.  
 --
