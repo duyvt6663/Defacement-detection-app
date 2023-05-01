@@ -5,5 +5,9 @@ Dataset is crawled from Zone.h including 1700 defaced and 2500 benign web screen
 The crawler software is also an interesting aspect. It is also trained on CNN/Transformer to break Zone.h noisy captcha which in my opinion is extremely annoying.  
 The crawler repo is at: https://github.com/duyvt6663/ZoneH.crawler.
 
+# How to run  
+pip install requirements.txt  
+python main.py
+ 
 ---
 Contact: duy.le1201@hcmut.edu.vn
