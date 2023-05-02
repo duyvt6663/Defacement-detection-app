@@ -1,5 +1,5 @@
 from hyperas import optim
-from utils import *
+from model_prototype import *
 from hyperopt import Trials, tpe
 
 if __name__ ==  '__main__': 

@@ -42,6 +42,7 @@ def get_dataset_images(defaced_path, benign_path, in_dim = (100, 100), num_chann
     return dataset, labels
 
 def resize_images(*paths):
+    # resize images in paths to 100x100
     for path in paths:
         for image_name in os.listdir(path):
             img = Image.open(path+image_name)

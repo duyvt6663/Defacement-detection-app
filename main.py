@@ -2,8 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 import tkinter.ttk as ttk
 from tkinter import *
-from test import *
-from threading import Thread
+from utils import *
 
 class CircularProgressbar(object):
     def __init__(self, canvas, x0, y0, x1, y1, width=2, start_ang=0, full_extent=360.):
@@ -65,25 +64,19 @@ class CircularProgressbar(object):
 
 class Application(tk.Frame):
     def __init__(self, master=None):
+        self.checker = Checker(self)
+        self.driver = get_driver()
+
+        # set up the UI
         tk.Frame.__init__(self, master)
         self.grid()
         self.createWidgets()
 
     def check(self, url):
-        try:
-            # clear text from url box
-            self.url.delete(0, "end")
-
-            model = load_model("./models/our_model.h5")
-            res = []
-            t = Thread(target=check, args=(url, model, res))
-            t.start(), t.join()
-            alert, score = res[0], res[1]
-
-            self.label.config(text = alert)
-            self.progressbar.set_progress(score) 
-        except:
-            self.label.config(text = "Something wrong with the URL")
+        # exceptions are handled in checker
+        # clear text from url box
+        self.url.delete(0, "end")
+        self.checker.check(url)
 
     def createWidgets(self):
         row = 0 # widgets' state
@@ -105,8 +98,14 @@ class Application(tk.Frame):
         row += 1
 
     def start(self):
-        self.progressbar.start()
-        self.mainloop()
+        try:
+            self.progressbar.start()
+            self.mainloop()
+        except:
+            pass
+        finally:
+            # quit driver
+            self.driver.quit()
 
 if __name__ == '__main__':
     app = Application()
