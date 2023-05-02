@@ -6,8 +6,10 @@ The crawler software is also an interesting aspect. It is also trained on CNN/Tr
 The crawler repo is at: https://github.com/duyvt6663/ZoneH.crawler.
 
 # How to run  
+```
 pip install requirements.txt  
 python main.py
+```
  
 ---
 Contact: duy.le1201@hcmut.edu.vn
