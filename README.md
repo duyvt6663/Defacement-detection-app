@@ -9,6 +9,7 @@ The model components include:
 * a CNN that acts as baseline classifier. 
 * attack signatures matching.
 * hash-based checking. (on-going)  
+
 Our app as of its current state just simply receives a url and checks if it has high probability of having been defaced. It can, however, easily be modified to monitor urls intermittently.
 # How to run  
 ```
