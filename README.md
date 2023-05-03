@@ -1,6 +1,6 @@
 # Defacement-detection-app  
 Application that employs CNN to detect defacement.  
-Dataset includes 1700 defaced (crawled from Zone.h) and 2500 benign (this one is easy to find) web screenshots.  
+Dataset includes 1700 defaced (crawled from Zone.h) and 2500 benign (Kaggle) web screenshots.  
 
 The crawler software is also an interesting aspect. It is also trained on CNN/Transformer to break Zone.h noisy captcha which in my opinion is extremely annoying.  
 The crawler repo is at: https://github.com/duyvt6663/ZoneH.crawler.
