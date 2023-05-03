@@ -1,6 +1,6 @@
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from keras.models import load_model
 from selenium import webdriver
 from threading import Thread
@@ -73,8 +73,8 @@ class Checker:
         try:
             self.check_signature()
 
-            t1 = Thread(target=self.check_cnn)
-            t2 = Thread(target=self.check_hash)
+            t1 = PropagatingThread(target=self.check_cnn)
+            t2 = PropagatingThread(target=self.check_hash)
             t1.start(), t2.start()
             t1.join(), t2.join()
 
@@ -167,6 +167,24 @@ class Checker:
         shutil.rmtree(dirr, ignore_errors=True)
         return res
 
+class PropagatingThread(Thread):
+    def run(self):
+        self.exc = None
+        try:
+            if hasattr(self, '_Thread__target'):
+                # Thread uses name mangling prior to Python 3.
+                self.ret = self._Thread__target(*self._Thread__args, **self._Thread__kwargs)
+            else:
+                self.ret = self._target(*self._args, **self._kwargs)
+        except BaseException as e:
+            self.exc = e
+
+    def join(self, timeout=None):
+        super(PropagatingThread, self).join(timeout)
+        if self.exc:
+            raise self.exc
+        return self.ret
+    
 ################################################################
 #                                                              #
 #                         UTIL FUNCTIONs                       #
