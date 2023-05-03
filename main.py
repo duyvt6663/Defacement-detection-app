@@ -72,11 +72,24 @@ class Application(tk.Frame):
         self.grid()
         self.createWidgets()
 
-    def check(self, url):
+    def check(self):
         # exceptions are handled in checker
         # clear text from url box
+        self.checker.check(self.url.get())
         self.url.delete(0, "end")
-        self.checker.check(url)
+    
+    def monitor(self):
+        # exceptions are handled in checker
+        # clear text from url box
+        self.checker.monitor(self.url.get())
+        self.url.delete(0, "end")
+    
+    def config_widgets(self, state='disabled'):
+        if state not in ['disabled', 'normal']:
+            raise Exception("Weird widget state")
+        self.url.config(state=state)
+        self.addButton.config(state=state)
+        self.checkButton.config(state=state)
 
     def createWidgets(self):
         row = 0 # widgets' state
@@ -85,8 +98,14 @@ class Application(tk.Frame):
 
         Label(self, text='URL:', font=("Helvetica", 13)).grid(column=0, padx=10, row=row)
         self.url = tk.Entry(self, width=40, borderwidth=2)
-        self.url.bind("<Return>", lambda e: self.check(self.url.get()))
+        self.url.bind("<Return>")
         self.url.grid(column=1, row=row)
+        row += 1
+
+        self.addButton = tk.Button(self, text='MONITOR', command=lambda: self.monitor())
+        self.addButton.grid(row=row, column=0)
+        self.checkButton = tk.Button(self, text='CHECK', command=lambda: self.check())
+        self.checkButton.grid(row=row, column=1, sticky=tk.W)
         row += 1
 
         self.label.grid(row=row, column=0, columnspan=2)
