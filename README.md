@@ -10,7 +10,9 @@ The model components include:
 * attack signatures matching.
 * hash-based checking.
 
-![chen](https://user-images.githubusercontent.com/93929554/235979928-705cb46e-0fc2-449a-a236-28ef56eda904.png | width=500)
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/93929554/235979928-705cb46e-0fc2-449a-a236-28ef56eda904.png" width="500">  
+<p>
 This hybrid model was adopted from [Hoang, X. D., & Nguyen, N. T. (2019). Detecting website defacements based on machine learning techniques and attack signatures. Computers, 8(2), 35.]
 
 Our app as of its current state just simply receives a url and checks if it has high probability of having been defaced. It can, however, easily be modified to monitor urls intermittently.
