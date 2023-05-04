@@ -17,7 +17,7 @@ This hybrid model was adopted from [Hoang, X. D., & Nguyen, N. T. (2019). Detect
 
 Our app as of its current state just simply receives a url and checks if it has high probability of having been defaced. It can, however, easily be modified to monitor urls intermittently.  
 
-In hindsight, our CNN might not work very well since the dataset has quite a lot of overlaps, and the window size is 100x100 due to limit in memory. Will have to fix these later 
+In hindsight, our CNN might not work very well since the dataset has quite a lot of overlaps, and the window size is 100x100 due to limit in memory. Will have to fix these later. 
 # How to run  
 ```
 pip install requirements.txt  
