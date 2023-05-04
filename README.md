@@ -15,7 +15,9 @@ The model components include:
 <p>
 This hybrid model was adopted from [Hoang, X. D., & Nguyen, N. T. (2019). Detecting website defacements based on machine learning techniques and attack signatures. Computers, 8(2), 35.]
 
-Our app as of its current state just simply receives a url and checks if it has high probability of having been defaced. It can, however, easily be modified to monitor urls intermittently.
+Our app as of its current state just simply receives a url and checks if it has high probability of having been defaced. It can, however, easily be modified to monitor urls intermittently.  
+
+In hindsight, our CNN might not work very well since the dataset has quite a lot of overlaps, and the window size is 100x100 due to limit in memory. Will have to fix these later 
 # How to run  
 ```
 pip install requirements.txt  
